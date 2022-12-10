@@ -1,7 +1,10 @@
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 
+const URI =
+  `https://${import.meta.env.VITE_APP_GRAPHQL_HOST}.onrender.com/graphql` ||
+  'http://localhost:4004/graphql';
 const httpLink = new HttpLink({
-  uri: 'http://localhost:4004/graphql',
+  uri: URI,
   credentials: 'include',
 });
 

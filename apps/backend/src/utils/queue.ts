@@ -1,5 +1,5 @@
-import { Queue } from 'bullmq';
-import { Worker } from 'bullmq';
+import { Queue, Worker } from 'bullmq';
+import Redis from 'ioredis';
 
 import {
   createFakeComments,
@@ -9,9 +9,7 @@ import {
 
 const QUEUE_NAME = 'default';
 
-const connection = {
-  host: process.env.REDIS_HOST,
-};
+const connection = new Redis(process.env.REDIS_URL);
 
 export const queue = new Queue(QUEUE_NAME, { connection });
 

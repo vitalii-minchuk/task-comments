@@ -5,25 +5,24 @@ import { enqueue } from './../../utils/queue';
 import { removeData } from './fake-data.service';
 
 class FakeDataResolver {
-  
   @Authorized()
   @Mutation(() => Boolean)
   async generateFakeData() {
     try {
       await Promise.all(
-        _times(10).map(async () => {
+        _times(2).map(async () => {
           await enqueue('generateFakeUser');
         }),
       );
 
       await Promise.all(
-        _times(30).map(async () => {
+        _times(5).map(async () => {
           await enqueue('generateFakePost');
         }),
       );
 
       await Promise.all(
-        _times(20).map(async () => {
+        _times(10).map(async () => {
           await enqueue('generateFakeComments');
         }),
       );

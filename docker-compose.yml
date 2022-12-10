@@ -32,6 +32,7 @@ services:
     environment:
       DATABASE_URL: postgres://postgres@postgres/comments
       PORT: 4004
+      # REDIS_HOST: redis
       REDIS_URL: redis://redis:6379
     # networks:
     #   - task_comments_network

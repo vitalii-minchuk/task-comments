@@ -3,14 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "18.10.0"
+  },
   "scripts": {
     "build": "rimraf dist && swc ./src -d dist",
-    "start": "node dist/index.js",
-    "start:docker": "npm run build && npm run start",
-    "rebuild:be": "docker compose build backend && docker compose rm --stop backend && docker compose up -d backend",
-    "db:console": "docker compose exec postgres psql -h localhost -U postgres -d comments_dev",
+    "build:prisma": "prisma generate && yarn rebuild:be",
+    "db:console": "docker compose exec postgres psql -h localhost -U postgres -d comments",
     "db:migrate": "npx prisma migrate reset",
-    "docker:db:migrate": "docker compose run backend npm run db:migrate"
+    "docker:db:migrate": "docker compose run backend yarn db:migrate",
+    "rebuild:be": "docker compose build backend && docker compose rm --stop backend && docker compose up -d backend",
+    "start": "node dist/index.js",
+    "start:docker": "yarn build && node --inspect=0.0.0.0 dist/index.js"
   },
   "keywords": [],
   "author": "",
@@ -21,7 +25,6 @@
     "@tsconfig/node18": "^1.0.1",
     "@types/lodash.random": "^3.2.7",
     "@types/lodash.times": "^4.3.7",
-    "@types/node": "^18.11.9",
     "@types/sanitize-html": "^2.6.2",
     "@typescript-eslint/eslint-plugin": "^5.44.0",
     "@typescript-eslint/parser": "^5.44.0",
@@ -31,6 +34,8 @@
     "typescript": "^4.9.3"
   },
   "dependencies": {
+    "@tsconfig/node18": "^1.0.1",
+    "@types/node": "^18.11.9",
     "@faker-js/faker": "^7.6.0",
     "@fastify/cookie": "^6.0.0",
     "@fastify/cors": "^7.0.0",
@@ -43,6 +48,7 @@
     "class-validator": "^0.13.2",
     "fastify": "^3.17.0",
     "graphql": "^15.3.0",
+    "ioredis": "^5.2.4",
     "lodash.random": "^3.2.0",
     "lodash.times": "^4.3.2",
     "npm": "^9.1.2",
