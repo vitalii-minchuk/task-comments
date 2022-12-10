@@ -26,6 +26,7 @@ app.register(fastifyCors, {
     if (
       !origin ||
       [
+        'https://task-comments-prod-frontend1.onrender.com',
         'http://127.0.0.1:5173',
         'https://task-comments.netlify.app',
         'https://studio.apollographql.com',
@@ -89,6 +90,7 @@ async function createServer() {
 
   const server = new ApolloServer({
     schema,
+    persistedQueries: false,
     plugins: [
       fastifyAppClosePlugin(app),
       ApolloServerPluginDrainHttpServer({
