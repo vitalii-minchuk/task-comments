@@ -1,0 +1,6 @@
+mutation CreateNewComment($input: CreateCommentInput!) {
+  createNewComment(input: $input) {
+    text
+    image_url
+  }
+}

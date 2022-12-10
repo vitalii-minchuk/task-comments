@@ -1,0 +1,3 @@
+mutation DeleteData {
+  deleteData
+}

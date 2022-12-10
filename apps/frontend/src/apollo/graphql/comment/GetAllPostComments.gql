@@ -1,0 +1,14 @@
+query GetAllPostComments($input: GetPostCommentsInput!) {
+  getAllPostComments(input: $input) {
+    text
+    image_url
+    id
+    createdAt
+    parentId
+    user {
+      username
+      avatar
+      email
+    }
+  }
+}

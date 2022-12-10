@@ -1,0 +1,16 @@
+.quill {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid #7928CA;
+    border-radius: 16px;
+}
+
+.ql-toolbar.ql-snow {
+    background-color:rgba(0, 0, 0, 0.35);
+    border: none;
+    border-radius: 16px 16px 0 0;
+}
+
+.ql-container.ql-snow {
+    border: none;
+}
+

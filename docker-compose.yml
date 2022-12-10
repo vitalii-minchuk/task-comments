@@ -1,0 +1,42 @@
+version: "2"
+
+services:
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: comments
+      POSTGRES_HOST_AUTH_METHOD: trust
+    # networks:
+    #   - task_comments_network
+
+  redis:
+    image: redis:6.2.5-alpine
+    # networks:
+    #   - task_comments_network
+
+  backend:
+    build:
+      context: .
+      dockerfile: ./apps/backend/Dockerfile
+    depends_on:
+      - postgres
+    ports:
+      - 4004:4004
+      - 9229:9229 # debugger port
+    volumes:
+      - ./apps/backend:/app/apps/backend
+      - /app/apps/backend/node_modules
+    command: yarn start:docker
+    environment:
+      DATABASE_URL: postgres://postgres@postgres/comments
+      PORT: 4004
+      REDIS_URL: redis://redis:6379
+    # networks:
+    #   - task_comments_network
+# Define a network, which allows containers to communicate
+# with each other, by using their container name as a hostname
+# networks:
+#   task_comments_network:
+#     external: true

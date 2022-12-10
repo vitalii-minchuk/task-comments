@@ -1,0 +1,14 @@
+query GetPosts($posts: GetPostsInput!) {
+  getAllPosts(posts: $posts) {
+    total
+    id
+    createdAt
+    text
+    image_url
+    user {
+      username
+      email
+      avatar
+    }
+  }
+}
