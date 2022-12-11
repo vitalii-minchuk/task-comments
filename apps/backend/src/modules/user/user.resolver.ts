@@ -80,7 +80,7 @@ class UserResolver {
         secure: true,
         domain: 'task-comments-prod-backend1.onrender.com',
         httpOnly: true,
-        sameSite: true,
+        sameSite: 'none',
       });
 
       return token;
