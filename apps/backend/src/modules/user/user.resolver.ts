@@ -77,8 +77,10 @@ class UserResolver {
 
       context.reply?.setCookie('token', token, {
         path: '/',
+        secure: true,
         domain: 'onrender.com',
         httpOnly: true,
+        sameSite: false,
       });
 
       return token;
