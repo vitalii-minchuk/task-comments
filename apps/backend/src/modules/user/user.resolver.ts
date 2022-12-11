@@ -79,9 +79,9 @@ class UserResolver {
         // domain: 'localhost',
         path: '/',
         secure: true,
-        domain: 'task-comments-prod-frontend1.onrender.com/',
+        domain: 'task-comments-prod-frontend1.onrender.com',
         httpOnly: true,
-        sameSite: 'none',
+        sameSite: 'lax',
       });
 
       return token;
