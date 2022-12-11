@@ -78,7 +78,7 @@ class UserResolver {
       context.reply?.setCookie('token', token, {
         // domain: 'localhost',
         path: '/',
-        secure: true,
+        secure: false,
         domain: 'task-comments-prod-frontend1.onrender.com',
         httpOnly: true,
         sameSite: 'lax',
