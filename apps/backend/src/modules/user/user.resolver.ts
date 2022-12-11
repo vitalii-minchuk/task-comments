@@ -76,10 +76,10 @@ class UserResolver {
       }
 
       context.reply?.setCookie('token', token, {
-        domain: 'localhost',
+        // domain: 'localhost',
         path: '/',
         secure: true,
-        // domain: 'netlify.app',
+        domain: 'task-comments-prod-frontend1.onrender.com/',
         httpOnly: true,
         sameSite: 'none',
       });
