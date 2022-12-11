@@ -76,12 +76,9 @@ class UserResolver {
       }
 
       context.reply?.setCookie('token', token, {
-        // domain: 'localhost',
         path: '/',
-        secure: false,
-        domain: 'task-comments-prod-frontend1.onrender.com',
+        domain: 'onrender.com',
         httpOnly: true,
-        sameSite: 'lax',
       });
 
       return token;
